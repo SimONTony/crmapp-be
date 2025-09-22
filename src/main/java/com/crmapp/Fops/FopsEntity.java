@@ -2,6 +2,7 @@ package com.crmapp.Fops;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
@@ -22,7 +23,9 @@ public class FopsEntity {
     private String address;
 
     @Column
-    private String phone;#
+    private String phone;
+    @Id
+    private Long id;
 
     public FopsEntity(Integer fopId, String name, String email, String address, String phone) {
         this.fopId = fopId;
@@ -31,6 +34,11 @@ public class FopsEntity {
         this.address = address;
         this.phone = phone;
     }
+
+    public FopsEntity() {
+
+    }
+
 
     @Override
     public String toString() {
@@ -42,6 +50,8 @@ public class FopsEntity {
                 ", phone='" + phone + '\'' +
                 '}';
     }
+
+
 }
 
 
