@@ -1,17 +1,17 @@
 package com.crmapp.person;
 
-
-
-import lombok.*;
-
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import java.sql.Date;
-
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-//@Builder
+@Builder
 public class PersonDto {
 
     private int personId;
@@ -22,8 +22,6 @@ public class PersonDto {
     private String email;
     private String gender;
     private String phone;
-//    private List<String> address;
     private Date birthday;
-
 
 }
