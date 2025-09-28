@@ -20,10 +20,11 @@ public class PersonController {
     private PersonService personService;
 
     @GetMapping
-    public List<PersonEntity> getAllPersons() {
-        List<PersonEntity> persons = personService.getAllPersons();
+    public List<PersonDto> getAllPersons() {
+        List<PersonDto> persons = personService.getAllPersons();
         return persons;
-
     }
+
+
 
 }

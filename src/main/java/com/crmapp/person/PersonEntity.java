@@ -1,5 +1,5 @@
 package com.crmapp.person;
-import java.util.Date;
+import java.sql.Date;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -44,7 +44,7 @@ public class PersonEntity {
     private String email;
 
     @Column
-    private byte gender;
+    private String gender;
 
     @Column
     private int phone;
