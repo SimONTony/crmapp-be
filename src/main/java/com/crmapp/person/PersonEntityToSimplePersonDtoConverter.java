@@ -10,12 +10,12 @@ public class PersonEntityToSimplePersonDtoConverter implements Converter<PersonE
     public PersonDto convert(PersonEntity source) {
         return PersonDto.builder()
                 .personId(source.getPersonId())
-                .firstName(source.getFirstName())
-                .lastName(source.getLastName())
+                .firstName(source.getFirstname())
+                .surname(source.getSurname())
                 .email(source.getEmail())
-                .birthday(source.getBirth())
+                .birthday(source.getBirthday())
                 .hasFop(source.getHasFop())
-                .gender(source.getGender())
+//                .gender(source.getGender())
                 .build();
     }
 

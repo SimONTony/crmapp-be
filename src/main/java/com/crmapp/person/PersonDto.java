@@ -16,12 +16,12 @@ public class PersonDto {
 
     private int personId;
     private String firstName;
-    private String secondName;
-    private String lastName;
+    private String surname;
+    private String lastname;
     private boolean hasFop;
     private String email;
-    private String gender;
-    private String phone;
+//    private String gender;
+//    private String phone;
     private Date birthday;
 
 }

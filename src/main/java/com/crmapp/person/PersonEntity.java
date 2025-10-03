@@ -30,13 +30,13 @@ public class PersonEntity {
     private int personId;
 
     @Column
-    private String firstName;
+    private String firstname;
 
     @Column
-    private String secondName;
+    private String surname;
 
     @Column
-    private String lastName;
+    private String lastname;
 
     @Column
     private Boolean HasFop;
@@ -44,17 +44,14 @@ public class PersonEntity {
     @Column
     private String email;
 
-    @Column
-    private String gender;
+//    @Column
+//    private String gender;
+//
+//    @Column
+//    private Integer phone;
 
     @Column
-    private int phone;
-
-    @Column
-    private String address;
-
-    @Column
-    private Date birth;
+    private Date birthday;
 
 
 
