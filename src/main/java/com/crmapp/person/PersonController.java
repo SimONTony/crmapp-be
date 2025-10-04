@@ -1,8 +1,10 @@
 package com.crmapp.person;
 
 
+import jakarta.persistence.Entity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -22,6 +24,10 @@ public class PersonController {
         return persons;
     }
 
-
+    @GetMapping(value = "/{personId}")
+    public PersonDto getPersonById(@PathVariable Integer personId) {
+        PersonDto person = personService.getPersonById((personId));
+        return person;
+    }
 
 }

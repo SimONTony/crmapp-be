@@ -39,7 +39,7 @@ public class PersonEntity {
     private String lastname;
 
     @Column
-    private Boolean HasFop;
+    private Boolean hasFop;
 
     @Column
     private String email;
