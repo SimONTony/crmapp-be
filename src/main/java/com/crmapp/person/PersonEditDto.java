@@ -1,18 +1,16 @@
 package com.crmapp.person;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+
 import java.sql.Date;
+
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class PersonDto {
+public class PersonEditDto {
 
     private int personId;
     private String firstName;
@@ -20,13 +18,9 @@ public class PersonDto {
     private String lastname;
     private boolean hasFop;
     private String email;
-//    private String gender;
+    //    private String gender;
 //    private String phone;
     private Date birthday;
-    private int age;
 
-    public int getAge() {
-        return new Date().getYear - birthday.getYear();
-    }
 
 }

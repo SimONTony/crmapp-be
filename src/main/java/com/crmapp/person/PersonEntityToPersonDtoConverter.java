@@ -4,7 +4,7 @@ import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 
 @Component
-public class PersonEntityToSimplePersonDtoConverter implements Converter<PersonEntity, PersonDto> {
+public class PersonEntityToPersonDtoConverter implements Converter<PersonEntity, PersonDto> {
 
     @Override
     public PersonDto convert(PersonEntity source) {

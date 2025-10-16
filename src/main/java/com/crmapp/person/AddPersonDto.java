@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
 import java.sql.Date;
 
 @Getter
@@ -12,7 +13,7 @@ import java.sql.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class PersonDto {
+public class AddPersonDto {
 
     private int personId;
     private String firstName;
@@ -20,13 +21,10 @@ public class PersonDto {
     private String lastname;
     private boolean hasFop;
     private String email;
-//    private String gender;
+    //rivate String gender;
 //    private String phone;
     private Date birthday;
-    private int age;
 
-    public int getAge() {
-        return new Date().getYear - birthday.getYear();
-    }
+
 
 }

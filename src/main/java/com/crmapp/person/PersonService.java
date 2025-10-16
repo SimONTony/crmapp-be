@@ -4,17 +4,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 
 @Service
 public class PersonService {
 
     @Autowired
-    private PersonEntityToSimplePersonDtoConverter personEntityToSimplePersonDtoConverter;
+    private PersonEntityToPersonDtoConverter personEntityToSimplePersonDtoConverter;
 
     @Autowired
     private PersonRepository personRepository;
+
+    @Autowired
+    private PersonDtoToPersonEntityConverter personDtoToPersonEntityConverter;
+
 
     public List<PersonDto> getAllPersons() {
         List<PersonEntity> persons = personRepository.findAll();
@@ -33,5 +36,19 @@ public class PersonService {
     }
 
 
+    public void deletePerson(Integer personId) {
+        personRepository.deleteById(personId);
+    }
+
+
+    public PersonDto editPerson(PersonDto personDto) {
+        PersonEntity personEntity = PersonDtoToPersonEntityConverter.convert(personDto);
+        return personRepository.save(personEntity);
+    }
+
+    public PersonEntity savePerson(PersonDtoToPersonEntityConverter personDtoToPersonEntityConverter) {
+        PersonEntity personEntity = personDtoToPersonEntityConverter.convert(PersonDto.builder().build());
+       return personRepository.save(personEntity);
+    }
 
 }
