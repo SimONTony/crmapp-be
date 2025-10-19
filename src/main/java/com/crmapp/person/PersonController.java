@@ -3,6 +3,7 @@ package com.crmapp.person;
 
 import jakarta.persistence.Entity;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -32,21 +33,21 @@ public class PersonController {
 
 
     @DeleteMapping(value = "/{personId}")
-    private void deletePerson(@PathVariable Integer personId) {
+    public void deletePerson(@PathVariable Integer personId) {
         personService.deletePerson(personId);
 
     }
 
-    @PostMapping(value = "/{addPerson}")
-    private String addPerson(@ModelAttribute("personId") PersonEditDto person) {
-        PersonEntity savedPerson = personService.savePerson(@PutMapping (personDtoToPersonEntityConverter));
-        return "redirect:/persons/" + savedPerson.getPersonId();
+    @PostMapping(value = "/addPerson")
+    public ResponseEntity<PersonDto> addPerson(@RequestBody PersonDto personDto) {
+        PersonDto savedPerson = personService.addPerson(personDto);
+        return ResponseEntity.ok(savedPerson);
     }
 
-
-    @PutMapping(value = "/{personId}/{editPerson}")
-    private String editPerson(@PathVariable Integer personId, @RequestBody PersonEditDto personEditDtoDto) {
-        return personService.savePerson(PersonDtoToPersonEntityConverter);
-    }
+//
+//    @PutMapping(value = "/{personId}/editPerson")
+//    public String editPerson(@PathVariable Integer personId, @RequestBody PersonDto personDto) {
+//        return personService.(personDto);
+//    }
 
 }

@@ -39,16 +39,21 @@ public class PersonService {
     public void deletePerson(Integer personId) {
         personRepository.deleteById(personId);
     }
+//
+//
+//    public PersonDto editPerson(PersonDto personDto) {
+//        PersonEntity personEntity = PersonDtoToPersonEntityConverter.convert(personDto);
+//        return personRepository.save(personEntity);
+//    }
 
-
-    public PersonDto editPerson(PersonDto personDto) {
-        PersonEntity personEntity = PersonDtoToPersonEntityConverter.convert(personDto);
-        return personRepository.save(personEntity);
+    public PersonDto addPerson(PersonDto personDto) {
+        PersonEntity personEntity = personDtoToPersonEntityConverter.convert(personDto);
+        PersonEntity saved = personRepository.save(personEntity);
+        return personEntityToSimplePersonDtoConverter.convert(saved);
     }
 
-    public PersonEntity savePerson(PersonDtoToPersonEntityConverter personDtoToPersonEntityConverter) {
-        PersonEntity personEntity = personDtoToPersonEntityConverter.convert(PersonDto.builder().build());
-       return personRepository.save(personEntity);
-    }
-
+//    public PersonDto savePerson(PersonDto personDto){
+//        PersonEntity personEntity = personDtoToPersonEntityConverter.convert(personDto);
+//        return null;
+//    }
 }
