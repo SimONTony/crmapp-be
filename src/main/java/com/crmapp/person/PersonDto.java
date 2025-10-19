@@ -16,7 +16,7 @@ import java.sql.Date;
 public class PersonDto {
 
     private int personId;
-    private String firstName;
+    private String firstname;
     private String surname;
     private String lastname;
     private boolean hasFop;
@@ -24,10 +24,6 @@ public class PersonDto {
     //    private String gender;
 //    private String phone;
     private Date birthday;
-    private int age;
-
-//    public int getAge() {
-//        return new Date().getYear - birthday.getYear();
-//    }
+//    private int age;
 
 }
