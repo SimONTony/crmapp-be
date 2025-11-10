@@ -20,6 +20,7 @@ public class PersonService {
     @Autowired
     private PersonDtoToPersonEntityConverter personDtoToPersonEntityConverter;
 
+
     public List<PersonDto> getAllPersons() {
         List<PersonEntity> persons = personRepository.findAll();
         List<PersonDto> personDtos = persons.stream()
@@ -28,6 +29,7 @@ public class PersonService {
         return personDtos;
     }
 
+
     public PersonDto getPersonById(Integer personId) {
         PersonEntity person = personRepository.findById(personId)
                 .orElseThrow(() -> new IllegalArgumentException("Person was not found"));
@@ -35,21 +37,23 @@ public class PersonService {
         return personDto;
     }
 
+
     public void deletePerson(Integer personId) {
         personRepository.deleteById(personId);
     }
 
-    public PersonDto editPerson(PersonDto personDto) {
-        PersonEntity personEntity = personDtoToPersonEntityConverter.convert(personDto);
-        //todo
-        return null;
-    }
 
     public PersonDto addPerson(PersonDto personDto) {
         PersonEntity personEntity = personDtoToPersonEntityConverter.convert(personDto);
-        PersonEntity savedPersonEntity = personRepository.save(personEntity);
-        PersonDto savedPersonDto = personEntityToPersonDtoConverter.convert(savedPersonEntity);
-        return savedPersonDto;
+        PersonEntity saved = personRepository.save(personEntity);
+        return personEntityToPersonDtoConverter.convert(saved);
     }
 
+
+//
+//    public PersonDto editPerson (PersonEntity personDto) {
+//        PersonEntity personEntity = personRepository.getPersonById(personDto).
+//                orElseThrow(() -> new IllegalArgumentException("Person not fiend") );
+//        return personEntityToSimplePersonDtoConverter.convert(personEntity);
+//    }
 }

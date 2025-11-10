@@ -1,40 +1,42 @@
 package com.crmapp.person;
 
+
+import com.crmapp.person.conveter.PersonDtoToPersonEntityConverter;
+import jakarta.persistence.Entity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@Controller
 @RestController
 @RequestMapping(value = "/persons")
 public class PersonController {
 
     @Autowired
     private PersonService personService;
+    @Autowired
+    private PersonDtoToPersonEntityConverter personDtoToPersonEntityConverter;
 
     @GetMapping
-    public ResponseEntity<List<PersonDto>> getAllPersons() {
+    public List<PersonDto> getAllPersons() {
         List<PersonDto> persons = personService.getAllPersons();
-        return ResponseEntity.ok(persons);
+        return persons;
     }
 
     @GetMapping(value = "/{personId}")
-    public ResponseEntity<PersonDto> getPersonById(@PathVariable Integer personId) {
+    public PersonDto getPersonById(@PathVariable Integer personId) {
         PersonDto person = personService.getPersonById((personId));
-        return ResponseEntity.ok(person);
+        return person;
     }
 
+
     @DeleteMapping(value = "/{personId}")
-    public ResponseEntity<Void> deletePerson(@PathVariable Integer personId) {
+    public void deletePerson(@PathVariable Integer personId) {
         personService.deletePerson(personId);
-        return ResponseEntity.noContent().build();
+
     }
 
     @PostMapping(value = "/addPerson")
@@ -42,5 +44,14 @@ public class PersonController {
         PersonDto savedPerson = personService.addPerson(personDto);
         return ResponseEntity.ok(savedPerson);
     }
+
+
+//    @PutMapping(value = "/{personId}/editPerson")
+//    public String editPerson(@ModelAttribute ("person") PersonDto person,
+//                                                @PathVariable("personId") Integer personId) {
+//        person.setPersonId(personId);
+//        personService.addPerson(person);
+//        return "redirect:/persons/" + personId;
+//    }
 
 }
