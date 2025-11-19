@@ -41,7 +41,7 @@ public List<CompanyDto> getAllCompanies() {
 
     }
 
-    @PostMapping(value = "/addCompany")
+    @PostMapping(value = "/add")
     public ResponseEntity<CompanyDto> addCompany(@RequestBody CompanyDto companyDto) {
         CompanyDto saveCompany = companyService.addCompany(companyDto);
         return ResponseEntity.ok(saveCompany);
