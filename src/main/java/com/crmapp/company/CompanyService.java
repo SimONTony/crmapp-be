@@ -31,7 +31,7 @@ public class CompanyService {
     }
 
 
-    public CompanyDto getCompanyById(Integer companyId) {
+    public CompanyDto getCompanyById(Long companyId) {
         CompanyEntity company = companyRepository.findById(companyId)
                 .orElseThrow(() -> new IllegalArgumentException("Company was not found"));
         CompanyDto companyDto = companyEntityToCompanyDtoConverter.convert(company);
@@ -39,7 +39,7 @@ public class CompanyService {
     }
 
 
-    public void deleteCompany(Integer companyId) {
+    public void deleteCompany(Long companyId) {
         companyRepository.deleteById(companyId);
     }
 

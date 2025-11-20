@@ -10,7 +10,7 @@ import java.sql.Date;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CompanyDto {
 
-    private int companyId;
+    private Long companyId;
     private String companyName;
     private String alias;
     private String inn;

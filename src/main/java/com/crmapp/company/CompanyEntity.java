@@ -17,9 +17,9 @@ import java.sql.Date;
 public class CompanyEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "company_id")
-    private int companyId;
+    private Long companyId;
 
     @Column(name = "company_name")
     private String companyName;

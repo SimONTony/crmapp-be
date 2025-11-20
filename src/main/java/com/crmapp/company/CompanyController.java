@@ -29,14 +29,14 @@ public List<CompanyDto> getAllCompanies() {
 }
 
     @GetMapping(value = "/{companyId}")
-    public CompanyDto getCompanyById(@PathVariable Integer companyId) {
+    public CompanyDto getCompanyById(@PathVariable Long companyId) {
         CompanyDto company = companyService.getCompanyById((companyId));
         return company;
     }
 
 
     @DeleteMapping(value = "/{companyId}")
-    public void deleteCompany(@PathVariable Integer companyId) {
+    public void deleteCompany(@PathVariable Long companyId) {
         companyService.deleteCompany(companyId);
 
     }
