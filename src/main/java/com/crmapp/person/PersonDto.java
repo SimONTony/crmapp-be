@@ -15,7 +15,7 @@ import java.sql.Date;
 @Builder
 public class PersonDto {
 
-    private int personId;
+    private Long personId;
     private String firstname;
     private String surname;
     private String lastname;

@@ -21,9 +21,9 @@ import lombok.*;
 public class PersonEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "person_id")
-    private int personId;
+    private Long personId;
 
     @Column
     private String firstname;

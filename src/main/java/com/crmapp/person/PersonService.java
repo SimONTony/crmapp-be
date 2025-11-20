@@ -30,7 +30,7 @@ public class PersonService {
     }
 
 
-    public PersonDto getPersonById(Integer personId) {
+    public PersonDto getPersonById(Long personId) {
         PersonEntity person = personRepository.findById(personId)
                 .orElseThrow(() -> new IllegalArgumentException("Person was not found"));
         PersonDto personDto = personEntityToPersonDtoConverter.convert(person);
@@ -38,7 +38,7 @@ public class PersonService {
     }
 
 
-    public void deletePerson(Integer personId) {
+    public void deletePerson(Long personId) {
         personRepository.deleteById(personId);
     }
 

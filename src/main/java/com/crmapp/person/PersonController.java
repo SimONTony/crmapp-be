@@ -27,14 +27,14 @@ public class PersonController {
     }
 
     @GetMapping(value = "/{personId}")
-    public PersonDto getPersonById(@PathVariable Integer personId) {
+    public PersonDto getPersonById(@PathVariable Long personId) {
         PersonDto person = personService.getPersonById((personId));
         return person;
     }
 
 
     @DeleteMapping(value = "/{personId}")
-    public void deletePerson(@PathVariable Integer personId) {
+    public void deletePerson(@PathVariable Long personId) {
         personService.deletePerson(personId);
 
     }
