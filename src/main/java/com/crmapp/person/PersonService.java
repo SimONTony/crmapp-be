@@ -50,10 +50,10 @@ public class PersonService {
     }
 
 
-//
-//    public PersonDto editPerson (PersonEntity personDto) {
-//        PersonEntity personEntity = personRepository.getPersonById(personDto).
-//                orElseThrow(() -> new IllegalArgumentException("Person not fiend") );
-//        return personEntityToSimplePersonDtoConverter.convert(personEntity);
-//    }
+
+    public PersonDto editPerson(PersonDto personDto) {
+        PersonEntity personEntity = personDtoToPersonEntityConverter.convert(personDto);
+        PersonEntity updatedPerson = personRepository.save(personEntity);
+        return personEntityToPersonDtoConverter.convert(personEntity);
+    }
 }

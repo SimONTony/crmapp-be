@@ -2,15 +2,20 @@ package com.crmapp.person;
 
 
 import com.crmapp.person.conveter.PersonDtoToPersonEntityConverter;
-import jakarta.persistence.Entity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-@Controller
 @RestController
 @RequestMapping(value = "/persons")
 public class PersonController {
@@ -45,13 +50,10 @@ public class PersonController {
         return ResponseEntity.ok(savedPerson);
     }
 
-
-//    @PutMapping(value = "/{personId}/editPerson")
-//    public String editPerson(@ModelAttribute ("person") PersonDto person,
-//                                                @PathVariable("personId") Integer personId) {
-//        person.setPersonId(personId);
-//        personService.addPerson(person);
-//        return "redirect:/persons/" + personId;
-//    }
+    @PutMapping(value = "/edit")
+    public ResponseEntity<PersonDto> editPerson(@RequestBody PersonDto personDto) {
+        PersonDto updetedPerson = personService.editPerson(personDto);
+        return ResponseEntity.ok(updetedPerson);
+    }
 
 }

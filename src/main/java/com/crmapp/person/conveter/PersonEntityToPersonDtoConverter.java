@@ -14,10 +14,10 @@ public class PersonEntityToPersonDtoConverter implements Converter<PersonEntity,
                 .personId(source.getPersonId())
                 .firstname(source.getFirstname())
                 .surname(source.getSurname())
+                .lastname(source.getLastname())
                 .email(source.getEmail())
                 .birthday(source.getBirthday())
                 .hasFop(source.getHasFop())
-//                .gender(source.getGender())
                 .build();
     }
 

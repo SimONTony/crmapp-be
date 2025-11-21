@@ -21,9 +21,6 @@ public class PersonDto {
     private String lastname;
     private boolean hasFop;
     private String email;
-    //    private String gender;
-//    private String phone;
     private Date birthday;
-//    private int age;
 
 }
