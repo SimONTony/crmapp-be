@@ -52,8 +52,8 @@ public class PersonController {
 
     @PutMapping(value = "/edit")
     public ResponseEntity<PersonDto> editPerson(@RequestBody PersonDto personDto) {
-        PersonDto updetedPerson = personService.editPerson(personDto);
-        return ResponseEntity.ok(updetedPerson);
+        PersonDto updatedPerson = personService.editPerson(personDto);
+        return ResponseEntity.ok(updatedPerson);
     }
 
 }

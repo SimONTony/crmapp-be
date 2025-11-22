@@ -3,7 +3,6 @@ package com.crmapp.company;
 
 import com.crmapp.company.converter.CompanyDtoToCompanyEntityConverter;
 import com.crmapp.company.converter.CompanyEntityToCompanyDtoConverter;
-import com.crmapp.company.CompanyDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -50,5 +49,10 @@ public class CompanyService {
         return companyEntityToCompanyDtoConverter.convert(saved);
     }
 
+    public CompanyDto editCompany(CompanyDto companyDto) {
+        CompanyEntity companyEntity = companyDtoToCompanyEntityConverter.convert(companyDto);
+        CompanyEntity updatedCompany = companyRepository.save(companyEntity);
+        return companyEntityToCompanyDtoConverter.convert(updatedCompany);
+    }
 }
 
