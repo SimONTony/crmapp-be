@@ -1,12 +1,9 @@
 package com.crmapp.person;
 
-
 import com.crmapp.person.conveter.PersonDtoToPersonEntityConverter;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -20,10 +17,13 @@ import java.util.List;
 @RequestMapping(value = "/persons")
 public class PersonController {
 
-    @Autowired
-    private PersonService personService;
-    @Autowired
-    private PersonDtoToPersonEntityConverter personDtoToPersonEntityConverter;
+    private final PersonService personService;
+    private final PersonDtoToPersonEntityConverter personDtoToPersonEntityConverter;
+
+    public PersonController(PersonService personService, PersonDtoToPersonEntityConverter personDtoToPersonEntityConverter) {
+        this.personService = personService;
+        this.personDtoToPersonEntityConverter = personDtoToPersonEntityConverter;
+    }
 
     @GetMapping
     public List<PersonDto> getAllPersons() {

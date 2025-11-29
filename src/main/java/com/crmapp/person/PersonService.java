@@ -1,59 +1,15 @@
 package com.crmapp.person;
 
-import com.crmapp.person.conveter.PersonDtoToPersonEntityConverter;
-import com.crmapp.person.conveter.PersonEntityToPersonDtoConverter;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import java.util.List;
 
+public interface PersonService {
+    List<PersonDto> getAllPersons();
 
-@Service
-public class PersonService {
+    PersonDto getPersonById(Long personId);
 
-    @Autowired
-    private PersonEntityToPersonDtoConverter personEntityToPersonDtoConverter;
+    void deletePerson(Long personId);
 
-    @Autowired
-    private PersonRepository personRepository;
+    PersonDto addPerson(PersonDto personDto);
 
-    @Autowired
-    private PersonDtoToPersonEntityConverter personDtoToPersonEntityConverter;
-
-
-    public List<PersonDto> getAllPersons() {
-        List<PersonEntity> persons = personRepository.findAll();
-        List<PersonDto> personDtos = persons.stream()
-                .map(person -> personEntityToPersonDtoConverter.convert(person))
-                .toList();
-        return personDtos;
-    }
-
-
-    public PersonDto getPersonById(Long personId) {
-        PersonEntity person = personRepository.findById(personId)
-                .orElseThrow(() -> new IllegalArgumentException("Person was not found"));
-        PersonDto personDto = personEntityToPersonDtoConverter.convert(person);
-        return personDto;
-    }
-
-
-    public void deletePerson(Long personId) {
-        personRepository.deleteById(personId);
-    }
-
-
-    public PersonDto addPerson(PersonDto personDto) {
-        PersonEntity personEntity = personDtoToPersonEntityConverter.convert(personDto);
-        PersonEntity saved = personRepository.save(personEntity);
-        return personEntityToPersonDtoConverter.convert(saved);
-    }
-
-
-
-    public PersonDto editPerson(PersonDto personDto) {
-        PersonEntity personEntity = personDtoToPersonEntityConverter.convert(personDto);
-        PersonEntity updatedPerson = personRepository.save(personEntity);
-        return personEntityToPersonDtoConverter.convert(personEntity);
-    }
+    PersonDto editPerson(PersonDto personDto);
 }
