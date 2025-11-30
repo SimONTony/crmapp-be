@@ -6,7 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.sql.Date;
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -21,6 +21,6 @@ public class PersonDto {
     private String lastname;
     private boolean hasFop;
     private String email;
-    private Date birthday;
+    private LocalDateTime birthday;
 
 }

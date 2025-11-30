@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd">
+
+    <changeSet id="1-create-person-table" author="auto-generated">
+        <comment>Создание таблицы PERSONS для хранения информации о пользователях.</comment>
+        <createTable tableName="PERSONS">
+
+<!--            or use BIGSERIAL type?? -->
+            <column name="person_id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+
+            <column name="firstname" type="VARCHAR(255)"/>
+            <column name="surname" type="VARCHAR(255)"/>
+            <column name="lastname" type="VARCHAR(255)"/>
+
+            <column name="has_fop" type="BOOLEAN"/>
+
+            <column name="email" type="VARCHAR(255)"/>
+            <column name="phone" type="VARCHAR(255)"/>
+
+            <column name="birthday" type="TIMESTAMP WITHOUT TIME ZONE"/>
+
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>
