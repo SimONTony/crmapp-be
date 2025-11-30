@@ -1,15 +1,8 @@
 package com.crmapp.person;
 
-import com.crmapp.person.conveter.PersonDtoToPersonEntityConverter;
+import com.crmapp.core.response.dto.BaseResponseDto;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -18,23 +11,21 @@ import java.util.List;
 public class PersonController {
 
     private final PersonService personService;
-    private final PersonDtoToPersonEntityConverter personDtoToPersonEntityConverter;
 
-    public PersonController(PersonService personService, PersonDtoToPersonEntityConverter personDtoToPersonEntityConverter) {
+    public PersonController(PersonService personService) {
         this.personService = personService;
-        this.personDtoToPersonEntityConverter = personDtoToPersonEntityConverter;
     }
 
     @GetMapping
-    public List<PersonDto> getAllPersons() {
+    public BaseResponseDto<List<PersonDto>> getAllPersons() {
         List<PersonDto> persons = personService.getAllPersons();
-        return persons;
+        return new BaseResponseDto<>(persons);
     }
 
     @GetMapping(value = "/{personId}")
-    public PersonDto getPersonById(@PathVariable Long personId) {
+    public BaseResponseDto<PersonDto> getPersonById(@PathVariable Long personId) {
         PersonDto person = personService.getPersonById((personId));
-        return person;
+        return new BaseResponseDto<>(person);
     }
 
 
