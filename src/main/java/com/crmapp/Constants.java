@@ -5,11 +5,15 @@ import org.springframework.stereotype.Component;
 @Component
 public class Constants {
 
+
     public static final int API_VERSION = 1;
     public static final String API_PATH = "api/v" + API_VERSION;
+    public static final String DEFAULT_SCHEMA = "crmapp";
 
     public static class TableName {
         public static final String PERSONS = "persons";
+        public static final String USERS = "users";
+        public static final String EMPLOYEES = "employees";
     }
 
     public static class MessageConstants {
