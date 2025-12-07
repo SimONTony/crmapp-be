@@ -6,10 +6,8 @@
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd">
 
     <changeSet id="1-create-person-table" author="auto-generated">
-        <comment>Создание таблицы PERSONS для хранения информации о пользователях.</comment>
         <createTable tableName="PERSONS">
 
-<!--            or use BIGSERIAL type?? -->
             <column name="person_id" type="BIGINT" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
