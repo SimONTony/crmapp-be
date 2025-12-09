@@ -7,7 +7,7 @@
 
     <changeSet id="001-create-table-employees" author="a.saifullin">
         <createTable tableName="employees">
-            <column name="employee_id" type="BIGINT" autoIncrement="true">
+            <column name="id" type="BIGINT" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
 

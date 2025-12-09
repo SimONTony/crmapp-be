@@ -19,11 +19,6 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 public class EmployeeEntity extends BaseEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "employee_id")
-    private Long employeeId;
-
     @Column(length = 100, nullable = false)
     private String firstname;
 

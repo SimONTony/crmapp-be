@@ -19,11 +19,6 @@ import java.time.LocalDateTime;
 @Table(name = Constants.TableName.USERS, schema = Constants.DEFAULT_SCHEMA)
 public class UserEntity extends BaseEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "user_id")
-    private Long userId;
-
     @Column(unique = true, nullable = false)
     private String username;
 
@@ -40,7 +35,7 @@ public class UserEntity extends BaseEntity {
     private LocalDateTime lastLoginAt;
 
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "employee_id", referencedColumnName = "employee_id", nullable = false)
+    @JoinColumn(name = "employee_id", referencedColumnName = "id", nullable = false)
     private EmployeeEntity employee;
 
 }

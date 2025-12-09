@@ -7,7 +7,7 @@
 
     <changeSet id="002-create-table-users" author="a.saifullin">
         <createTable tableName="users">
-            <column name="user_id" type="BIGINT" autoIncrement="true">
+            <column name="id" type="BIGINT" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
 
@@ -46,7 +46,7 @@
                 baseTableName="users"
                 constraintName="fk_users_on_employee"
                 onDelete="CASCADE"
-                referencedColumnNames="employee_id"
+                referencedColumnNames="id"
                 referencedTableName="employees"/>
 
     </changeSet>
