@@ -10,20 +10,20 @@ import java.util.Collection;
 public class JwtUser implements UserDetails {
 
     private final Long id;
-    private final String email;
+    private final String username;
     private final String password;
     private final boolean enabled;
     private final LocalDateTime lastPasswordResetDate;
     private final Collection<? extends GrantedAuthority> authorities;
 
     public JwtUser(Long id,
-                   String email,
+                   String username,
                    String password,
                    boolean enabled,
                    LocalDateTime lastPasswordResetDate,
                    Collection<? extends GrantedAuthority> authorities) {
         this.id = id;
-        this.email = email;
+        this.username = username;
         this.password = password;
         this.enabled = enabled;
         this.lastPasswordResetDate = lastPasswordResetDate;
@@ -48,7 +48,7 @@ public class JwtUser implements UserDetails {
 
     @Override
     public String getUsername() {
-        return email;
+        return username;
     }
 
     @JsonIgnore

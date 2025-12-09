@@ -1,6 +1,6 @@
 package com.crmapp.securiry.dto;
 
-import ee.hansab.ella.user.model.CurrentUserRecord;
+import com.crmapp.user.CurrentUserRecord;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 

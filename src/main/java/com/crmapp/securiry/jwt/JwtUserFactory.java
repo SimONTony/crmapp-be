@@ -15,12 +15,12 @@ public final class JwtUserFactory {
 
     public static JwtUser create(UserEntity user) {
         return new JwtUser(
-                user.getId(),
-                user.getEmail(),
+                user.getUserId(),
+                user.getUsername(),
                 user.getPassword(),
-                user.getStatus().equals(UserStatus.ACTIVE),
+                user.getEnabled(),
                 user.getUpdatedAt(),
-                mapToGrantedAuthorities(List.of(user.getRole())));
+                mapToGrantedAuthorities(List.of(UserRole.SUPERADMIN))); // todo roles
     }
 
     private static List<GrantedAuthority> mapToGrantedAuthorities(List<UserRole> roles) {

@@ -42,12 +42,12 @@ public class UserServiceImpl implements UserService {
         UserEntity user = UserMapper.INSTANCE.recordToEntity(userRecord);
 
         user.setPassword(passwordEncoder.encode(user.getPassword()));
-        user.setStatus(UserStatus.ACTIVE);
-        user.setRequirePasswordChange(true);
-        user.setMfaEnabled(false);
+//        user.setStatus(UserStatus.ACTIVE);
+//        user.setRequirePasswordChange(true);
+//        user.setMfaEnabled(false);
 
         UserEntity createdUser = userRepository.save(user);
-        log.debug("IN register -> User with email {} registered successfully", createdUser.getEmail());
+        log.debug("IN register -> User with email {} registered successfully", createdUser.getUsername());
         return UserMapper.INSTANCE.entityToRecord(createdUser);
     }
 
@@ -55,20 +55,20 @@ public class UserServiceImpl implements UserService {
         return UserMapper.INSTANCE.entityListToRecordList(userRepository.findAll());
     }
 
-    /**
-     * unique email == username for log-in
-     */
-    public UserEntity findByEmail(String email) {
-        UserEntity foundUser = userRepository.findByEmail(email)
-                .orElseThrow(() -> new UsernameNotFoundException(String.format("User with the email %s not found", email)));
-        log.debug("IN findByName -> Found user by name {}", foundUser.getEmail());
-        return foundUser;
-    }
+//    /**
+//     * unique email == username for log-in
+//     */
+//    public UserEntity findByEmail(String email) {
+//        UserEntity foundUser = userRepository.findByEmail(email)
+//                .orElseThrow(() -> new UsernameNotFoundException(String.format("User with the email %s not found", email)));
+//        log.debug("IN findByName -> Found user by name {}", foundUser.getUsername());
+//        return foundUser;
+//    }
 
     public UserEntity findById(Long id) {
         UserEntity foundUser = userRepository.findById(id)
                 .orElseThrow(() -> new UsernameNotFoundException(String.format("User with the id %s not found", id)));
-        log.debug("IN findById -> Found user by id {}", foundUser.getEmail());
+        log.debug("IN findById -> Found user by id {}", foundUser.getUsername());
         return foundUser;
     }
 
@@ -103,13 +103,13 @@ public class UserServiceImpl implements UserService {
     public UserRecord editUser(EditUserRecord userRecord) {
         UserEntity existingUser = findById(userRecord.id());
 
-        existingUser.setFirstname(userRecord.firstname());
-        existingUser.setLastname(userRecord.lastname());
-        existingUser.setEmail(userRecord.email());
-        existingUser.setRole(userRecord.role());
+//        existingUser.setFirstname(userRecord.firstname());
+//        existingUser.setLastname(userRecord.lastname());
+//        existingUser.setEmail(userRecord.email());
+//        existingUser.setRole(userRecord.role());
 
         UserEntity updatedUser = userRepository.save(existingUser);
-        log.debug("IN editUser -> User with email {} updated successfully", updatedUser.getEmail());
+        log.debug("IN editUser -> User with email {} updated successfully", updatedUser.getUsername());
 
         return UserMapper.INSTANCE.entityToRecord(updatedUser);
     }

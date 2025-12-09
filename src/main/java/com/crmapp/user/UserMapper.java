@@ -1,5 +1,6 @@
 package com.crmapp.user;
 
+import com.crmapp.securiry.jwt.JwtUser;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Named;
@@ -15,17 +16,17 @@ import java.util.List;
 public interface UserMapper {
     UserMapper INSTANCE = Mappers.getMapper(UserMapper.class);
 
-    UserRecord entityToRecord(User user);
+    UserRecord entityToRecord(UserEntity user);
 
-    User recordToEntity(UserRecord userRecord);
+    UserEntity recordToEntity(UserRecord userRecord);
 
-    User recordToEntity(CreateUserRecord userRecord);
+    UserEntity recordToEntity(CreateUserRecord userRecord);
 
-    User recordToEntity(EditUserRecord userRecord);
+    UserEntity recordToEntity(EditUserRecord userRecord);
 
-    List<UserRecord> entityListToRecordList(List<User> userList);
+    List<UserRecord> entityListToRecordList(List<UserEntity> userList);
 
-    List<User> recordListToEntityList(List<UserRecord> userRecordList);
+    List<UserEntity> recordListToEntityList(List<UserRecord> userRecordList);
 
     @Mapping(target = "role", source = "authorities", qualifiedByName = "mapAuthoritiesToRole")
     @Mapping(target = "status", expression = "java(jwtUser.isEnabled() ? UserStatus.ACTIVE : UserStatus.INACTIVE)")
@@ -47,7 +48,7 @@ public interface UserMapper {
         }
     }
 
-    default Page<UserRecord> entityPageToRecordPage(Page<User> value) {
+    default Page<UserRecord> entityPageToRecordPage(Page<UserEntity> value) {
         return value.map(UserMapper.INSTANCE::entityToRecord);
     }
 }
