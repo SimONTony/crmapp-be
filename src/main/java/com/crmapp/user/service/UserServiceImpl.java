@@ -1,17 +1,13 @@
 package com.crmapp.user.service;
 
-import com.crmapp.securiry.dto.LoginRequest;
 import com.crmapp.securiry.dto.LoginResponse;
-import com.crmapp.securiry.jwt.JwtAuthenticationException;
 import com.crmapp.securiry.jwt.JwtTokenProvider;
 import com.crmapp.securiry.jwt.JwtUser;
 import com.crmapp.user.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -82,19 +78,10 @@ public class UserServiceImpl implements UserService {
         return UserMapper.INSTANCE.entityToRecord(user);
     }
 
-    public LoginResponse authenticateUser(LoginRequest loginRequest) {
-        Authentication authentication;
-        try {
-            authentication = authenticationManager.authenticate(
-                    new UsernamePasswordAuthenticationToken(loginRequest.email(), loginRequest.password()));
-        } catch (AuthenticationException exception) {
-            throw new JwtAuthenticationException(exception.getMessage());
-        }
-
+    @Override
+    public LoginResponse authenticateUser(Authentication authentication) {
         SecurityContextHolder.getContext().setAuthentication(authentication);
-        if (!(authentication.getPrincipal() instanceof JwtUser currentUser)) {
-            throw new IllegalStateException("Invalid authentication principal type");
-        }
+        JwtUser currentUser = (JwtUser) authentication.getPrincipal();
         String token = jwtTokenProvider.generateToken(currentUser.getUsername());
         CurrentUserRecord currentUserRecord = UserMapper.INSTANCE.toCurrentUserRecord(currentUser);
         return new LoginResponse(token, currentUserRecord);

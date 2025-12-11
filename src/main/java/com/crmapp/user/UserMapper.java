@@ -2,7 +2,6 @@ package com.crmapp.user;
 
 import com.crmapp.securiry.jwt.JwtUser;
 import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
 import org.mapstruct.Named;
 import org.mapstruct.ReportingPolicy;
 import org.mapstruct.factory.Mappers;
@@ -28,9 +27,9 @@ public interface UserMapper {
 
     List<UserEntity> recordListToEntityList(List<UserRecord> userRecordList);
 
-    @Mapping(target = "role", source = "authorities", qualifiedByName = "mapAuthoritiesToRole")
-    @Mapping(target = "status", expression = "java(jwtUser.isEnabled() ? UserStatus.ACTIVE : UserStatus.INACTIVE)")
-    @Mapping(target = "email", source = "username")
+    //    @Mapping(target = "role", source = "authorities", qualifiedByName = "mapAuthoritiesToRole")
+//    @Mapping(target = "status", expression = "java(jwtUser.isEnabled() ? UserStatus.ACTIVE : UserStatus.INACTIVE)")
+//    @Mapping(target = "email", source = "username")
     CurrentUserRecord toCurrentUserRecord(JwtUser jwtUser);
 
     @Named("mapAuthoritiesToRole")

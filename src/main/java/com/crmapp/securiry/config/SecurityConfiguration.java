@@ -31,7 +31,7 @@ import java.util.List;
 @EnableMethodSecurity
 @RequiredArgsConstructor
 public class SecurityConfiguration {
-    private static final String LOGIN_ENDPOINT = "/api/login";
+    private static final String LOGIN_ENDPOINT = "/api/user/login";
 
     private final JwtTokenFilter jwtTokenFilter;
     private final JwtAuthEntryPoint unauthorizedHandler;
