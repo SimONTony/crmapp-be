@@ -47,9 +47,9 @@ public class UserController {
     }
 
     @GetMapping("all")
-    public ResponseEntity<List<UserRecord>> getAllUsers() {
+    public BaseResponseDto<List<UserRecord>> getAllUsers() {
         List<UserRecord> users = userService.getAllUsers();
-        return ResponseEntity.ok(users);
+        return new BaseResponseDto<>(users);
     }
 
     @GetMapping(value = "current")
