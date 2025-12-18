@@ -4,7 +4,7 @@
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                    https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
 
-    <changeSet id="003-create-table-addresses" author="a.saifullin">
+    <changeSet id="003-create-table-addresses" author="a.semechkin">
         <createTable tableName="addresses">
             <column name="id" type="BIGINT" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
@@ -27,8 +27,11 @@
             </column>
 
             <column name="apartment" type="VARCHAR(100)">
-                <constraints nullable="false"/>
             </column>
+
+            <column name="postalCode" type="BIGINT(100)">
+            </column>
+
 
         </createTable>
 
