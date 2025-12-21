@@ -7,7 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@Entity
+//@Entity
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "addresses")
@@ -23,7 +23,7 @@ import lombok.NoArgsConstructor;
 //
 
 
-public class AddressesEntity extends UserEntity {
+public class AddressEntity extends UserEntity {
     @Column(name = "addresses_id")
     private Integer addresId;
 
@@ -45,8 +45,8 @@ public class AddressesEntity extends UserEntity {
     @Column(name = "building")
     private String building;
 
-    @Column(name = "appartment")
-    private String appartment;
+    @Column(name = "apartment")
+    private String apartment;
 
     @Column(name = "postCode")
     private Integer postalCode;

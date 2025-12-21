@@ -29,7 +29,7 @@
             <column name="apartment" type="VARCHAR(100)">
             </column>
 
-            <column name="postalCode" type="BIGINT(100)">
+            <column name="postal_code" type="VARCHAR(10)">
             </column>
 
 
