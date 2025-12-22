@@ -1,6 +1,6 @@
 package com.crmapp.securiry.jwt;
 
-import com.crmapp.user.UserEntity;
+import com.crmapp.user.User;
 import com.crmapp.user.UserRole;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -13,7 +13,7 @@ public final class JwtUserFactory {
     private JwtUserFactory() {
     }
 
-    public static JwtUser create(UserEntity user) {
+    public static JwtUser create(User user) {
         return new JwtUser(
                 user.getId(),
                 user.getUsername(),

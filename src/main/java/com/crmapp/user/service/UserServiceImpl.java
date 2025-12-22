@@ -35,14 +35,14 @@ public class UserServiceImpl implements UserService {
     private final JwtTokenProvider jwtTokenProvider;
 
     public UserRecord createUser(CreateUserRecord userRecord) {
-        UserEntity user = UserMapper.INSTANCE.recordToEntity(userRecord);
+        User user = UserMapper.INSTANCE.recordToEntity(userRecord);
 
         user.setPassword(passwordEncoder.encode(user.getPassword()));
 //        user.setStatus(UserStatus.ACTIVE);
 //        user.setRequirePasswordChange(true);
 //        user.setMfaEnabled(false);
 
-        UserEntity createdUser = userRepository.save(user);
+        User createdUser = userRepository.save(user);
         log.debug("IN register -> User with email {} registered successfully", createdUser.getUsername());
         return UserMapper.INSTANCE.entityToRecord(createdUser);
     }
@@ -61,8 +61,8 @@ public class UserServiceImpl implements UserService {
 //        return foundUser;
 //    }
 
-    public UserEntity findById(Long id) {
-        UserEntity foundUser = userRepository.findById(id)
+    public User findById(Long id) {
+        User foundUser = userRepository.findById(id)
                 .orElseThrow(() -> new UsernameNotFoundException(String.format("User with the id %s not found", id)));
         log.debug("IN findById -> Found user by id {}", foundUser.getUsername());
         return foundUser;
@@ -74,7 +74,7 @@ public class UserServiceImpl implements UserService {
     }
 
     public UserRecord getCurrentUser(Long userId) {
-        UserEntity user = findById(userId);
+        User user = findById(userId);
         return UserMapper.INSTANCE.entityToRecord(user);
     }
 
@@ -88,14 +88,14 @@ public class UserServiceImpl implements UserService {
     }
 
     public UserRecord editUser(EditUserRecord userRecord) {
-        UserEntity existingUser = findById(userRecord.id());
+        User existingUser = findById(userRecord.id());
 
 //        existingUser.setFirstname(userRecord.firstname());
 //        existingUser.setLastname(userRecord.lastname());
 //        existingUser.setEmail(userRecord.email());
 //        existingUser.setRole(userRecord.role());
 
-        UserEntity updatedUser = userRepository.save(existingUser);
+        User updatedUser = userRepository.save(existingUser);
         log.debug("IN editUser -> User with email {} updated successfully", updatedUser.getUsername());
 
         return UserMapper.INSTANCE.entityToRecord(updatedUser);

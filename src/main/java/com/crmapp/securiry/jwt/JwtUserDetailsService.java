@@ -1,6 +1,6 @@
 package com.crmapp.securiry.jwt;
 
-import com.crmapp.user.UserEntity;
+import com.crmapp.user.User;
 import com.crmapp.user.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -18,7 +18,7 @@ public class JwtUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        UserEntity user = userRepository.findByUsername(username)
+        User user = userRepository.findByUsername(username)
                 .orElseThrow(() -> new UsernameNotFoundException(String.format("User with the email %s not found", username)));
         JwtUser jwtUser = JwtUserFactory.create(user);
         log.info("IN JwtUserDetailsService loadUserByUsername -> User {} loaded successfully ", username);

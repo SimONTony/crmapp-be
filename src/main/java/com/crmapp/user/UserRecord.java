@@ -9,6 +9,7 @@ public record UserRecord(
         String locked,
         LocalDateTime lastLoginAt,
         LocalDateTime createdAt,
-        LocalDateTime updatedAt
+        LocalDateTime updatedAt,
+        String url
 ) {
 }
