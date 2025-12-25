@@ -1,17 +1,22 @@
 package com.crmapp.addresses;
 
-import jakarta.persistence.Convert;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 
-import java.lang.annotation.Annotation;
-
 @Component
-public class AddressesDtoToAddressesEntityConverter implements Converter<AddressEntity, AddressDto> {
-
+public class AddressesDtoToAddressesEntityConverter implements Converter<AddressDto, AddressEntity> {
 
     @Override
-    public AddressDto convert(AddressEntity source) {
-        return null;
+    public AddressEntity convert(AddressDto source) {
+        return AddressEntity.builder()
+                .country(source.getCountry())
+                .state(source.getState())
+                .city(source.getCity())
+                .district(source.getDistrict())
+                .street(source.getStreet())
+                .building(source.getBuilding())
+                .apartment(source.getApartment())
+                .postalCode(source.getPostalCode())
+                .build();
     }
 }

@@ -1,8 +1,10 @@
 package com.crmapp.addresses;
 
+import com.crmapp.core.model.BaseEntity;
 import com.crmapp.user.UserEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -11,21 +13,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "addresses")
-
-
-//    @Id
-//    @GeneratedValue
-//    @Column(name = "contract_id")
-//    private Long contractId;
-//
-//    @Column(name = "person_id")
-//    private String personId;
-//
-
-
-public class AddressEntity extends UserEntity {
-    @Column(name = "addresses_id")
-    private Integer addresId;
+@Builder
+public class AddressEntity extends BaseEntity {
 
     @Column(name = "country")
     private String country;
@@ -51,7 +40,5 @@ public class AddressEntity extends UserEntity {
     @Column(name = "postCode")
     private Integer postalCode;
 
-//    @OneToMany(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "address_id",);
 
 }

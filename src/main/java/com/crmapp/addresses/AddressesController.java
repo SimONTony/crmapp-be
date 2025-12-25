@@ -17,40 +17,40 @@ public class AddressesController {
     private AddressService addressService;
 
     @Autowired
-    private CompanyDtoToCompanyEntityConverter companyDtoToCompanyEntityConverter;
+    private AddressesDtoToAddressesEntityConverter addressesDtoToAddressesEntityConverter;
 
-//
-//    @GetMapping
-//    public List<CompanyDto> getAllAddresses() {
-//        List<CompanyDto> companies = addressService.getAllAddresses();
-//        return companies;
-//    }
-//
-//    @GetMapping(value = "/{companyId}")
-//    public CompanyDto getCompanyById(@PathVariable Long companyId) {
-//        CompanyDto company = addressService.getAddressessById((companyId));
-//        return company;
-//    }
-//
-//
-//    @DeleteMapping(value = "/{companyId}")
-//    public void deleteCompany(@PathVariable Long companyId) {
-//        addressService.deleteCompany(companyId);
-//
-//    }
-//
-//    @PostMapping(value = "/add")
-//    public ResponseEntity<CompanyDto> addCompany(@RequestBody CompanyDto companyDto) {
-//        CompanyDto saveCompany = addressService.addCompany(companyDto);
-//        return ResponseEntity.ok(saveCompany);
-//    }
-//
-//    @PutMapping(value = "/edit")
-//    public ResponseEntity<CompanyDto> editCompany(@RequestBody CompanyDto companyDto) {
-//        CompanyDto updatedCompany = addressService.editAddress(companyDto);
-//        return ResponseEntity.ok(updatedCompany);
-//    }
-//
+
+    @GetMapping
+    public List<AddressDto> getAllAddresses() {
+        List<AddressDto> addresses = addressService.getAllAddresses();
+        return addresses;
+    }
+
+    @GetMapping(value = "/{addressId}")
+    public AddressDto getAddressById(@PathVariable Long addressId) {
+        AddressDto address = addressService.getAddressById((addressId));
+        return address;
+    }
+
+
+    @DeleteMapping(value = "/{addressId}")
+    public void deleteAddress(@PathVariable Long addressId) {
+        addressService.deleteCompany(addressId);
+
+    }
+
+    @PostMapping(value = "/add")
+    public ResponseEntity<AddressDto> addAddress(@RequestBody AddressDto addressDto) {
+        AddressDto saveAddress = addressService.addAddress(addressDto);
+        return ResponseEntity.ok(saveAddress);
+    }
+
+    @PutMapping(value = "/edit")
+    public ResponseEntity<AddressDto> editAddress(@RequestBody AddressDto addressDto) {
+        AddressDto updatedAddress = addressService.editAddress(addressDto);
+        return ResponseEntity.ok(updatedAddress);
+    }
+
 
 
 }
