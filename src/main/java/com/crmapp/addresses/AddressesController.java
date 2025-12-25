@@ -1,56 +1,52 @@
 package com.crmapp.addresses;
 
-
-import com.crmapp.company.CompanyDto;
-import com.crmapp.company.converter.CompanyDtoToCompanyEntityConverter;
+import com.crmapp.core.response.dto.BaseResponseDto;
+import com.crmapp.core.response.dto.ResultDto;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping
+@Slf4j
+@RequestMapping("address")
 public class AddressesController {
 
-    @Autowired
-    private AddressService addressService;
+    private final AddressServiceImpl addressService;
 
     @Autowired
-    private AddressesDtoToAddressesEntityConverter addressesDtoToAddressesEntityConverter;
-
-
-    @GetMapping
-    public List<AddressDto> getAllAddresses() {
-        List<AddressDto> addresses = addressService.getAllAddresses();
-        return addresses;
+    public AddressesController(AddressServiceImpl addressService) {
+        this.addressService = addressService;
     }
 
-    @GetMapping(value = "/{addressId}")
-    public AddressDto getAddressById(@PathVariable Long addressId) {
+    @GetMapping("all")
+    public BaseResponseDto<List<AddressDto>> getAllAddresses() {
+        return new BaseResponseDto<>(addressService.getAllAddresses());
+    }
+
+    @GetMapping(value = "{addressId}")
+    public BaseResponseDto<AddressDto> getAddressById(@PathVariable Long addressId) {
         AddressDto address = addressService.getAddressById((addressId));
-        return address;
+        return new BaseResponseDto<>(address);
     }
 
-
-    @DeleteMapping(value = "/{addressId}")
-    public void deleteAddress(@PathVariable Long addressId) {
+    @DeleteMapping(value = "{addressId}")
+    public ResultDto deleteAddress(@PathVariable Long addressId) {
         addressService.deleteCompany(addressId);
-
+        return new ResultDto("success");
     }
 
-    @PostMapping(value = "/add")
-    public ResponseEntity<AddressDto> addAddress(@RequestBody AddressDto addressDto) {
+    @PostMapping(value = "add")
+    public BaseResponseDto<AddressDto> addAddress(@RequestBody AddressDto addressDto) {
         AddressDto saveAddress = addressService.addAddress(addressDto);
-        return ResponseEntity.ok(saveAddress);
+        return new BaseResponseDto<>(saveAddress);
     }
 
-    @PutMapping(value = "/edit")
-    public ResponseEntity<AddressDto> editAddress(@RequestBody AddressDto addressDto) {
+    @PutMapping(value = "edit")
+    public BaseResponseDto<AddressDto> editAddress(@RequestBody AddressDto addressDto) {
         AddressDto updatedAddress = addressService.editAddress(addressDto);
-        return ResponseEntity.ok(updatedAddress);
+        return new BaseResponseDto<>(updatedAddress);
     }
-
-
 
 }

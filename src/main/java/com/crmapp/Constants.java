@@ -14,6 +14,7 @@ public class Constants {
         public static final String PERSONS = "persons";
         public static final String USERS = "users";
         public static final String EMPLOYEES = "employees";
+        public static final String ADDRESSES = "addresses";
     }
 
     public static class MessageConstants {

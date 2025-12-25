@@ -1,6 +1,6 @@
 package com.crmapp.addresses;
 
-public record AddresRecord(
+public record AddressRecord(
         String country,
         String state,
         String city,

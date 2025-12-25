@@ -14,4 +14,9 @@ public class ResultDto {
     private boolean result;
     private String resultMessage;
 
+    public ResultDto(String resultMessage) {
+        this.resultMessage = resultMessage;
+        this.result = true;
+    }
+
 }
