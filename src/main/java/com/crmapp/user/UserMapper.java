@@ -13,23 +13,21 @@ import java.util.List;
 
 @Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public interface UserMapper {
+
     UserMapper INSTANCE = Mappers.getMapper(UserMapper.class);
 
-    UserRecord entityToRecord(UserEntity user);
+    UserRecord entityToRecord(User user);
 
-    UserEntity recordToEntity(UserRecord userRecord);
+    User recordToEntity(UserRecord userRecord);
 
-    UserEntity recordToEntity(CreateUserRecord userRecord);
+    User recordToEntity(CreateUserRecord userRecord);
 
-    UserEntity recordToEntity(EditUserRecord userRecord);
+    User recordToEntity(EditUserRecord userRecord);
 
-    List<UserRecord> entityListToRecordList(List<UserEntity> userList);
+    List<UserRecord> entityListToRecordList(List<User> userList);
 
-    List<UserEntity> recordListToEntityList(List<UserRecord> userRecordList);
+    List<User> recordListToEntityList(List<UserRecord> userRecordList);
 
-    //    @Mapping(target = "role", source = "authorities", qualifiedByName = "mapAuthoritiesToRole")
-//    @Mapping(target = "status", expression = "java(jwtUser.isEnabled() ? UserStatus.ACTIVE : UserStatus.INACTIVE)")
-//    @Mapping(target = "email", source = "username")
     CurrentUserRecord toCurrentUserRecord(JwtUser jwtUser);
 
     @Named("mapAuthoritiesToRole")
@@ -47,7 +45,8 @@ public interface UserMapper {
         }
     }
 
-    default Page<UserRecord> entityPageToRecordPage(Page<UserEntity> value) {
+    default Page<UserRecord> entityPageToRecordPage(Page<User> value) {
         return value.map(UserMapper.INSTANCE::entityToRecord);
     }
+
 }

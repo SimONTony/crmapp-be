@@ -23,4 +23,12 @@ public abstract class BaseEntity {
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
 
+    public String getUrl() {
+        return new StringBuilder()
+                .append(getClass().getSimpleName().toLowerCase())
+                .append("/")
+                .append(getId())
+                .toString();
+    }
+
 }

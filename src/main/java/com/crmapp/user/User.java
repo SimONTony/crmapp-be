@@ -17,7 +17,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = Constants.TableName.USERS, schema = Constants.DEFAULT_SCHEMA)
-public class UserEntity extends BaseEntity {
+public class User extends BaseEntity {
 
     @Column(unique = true, nullable = false)
     private String username;

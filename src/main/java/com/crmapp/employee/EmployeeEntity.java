@@ -2,7 +2,7 @@ package com.crmapp.employee;
 
 import com.crmapp.Constants;
 import com.crmapp.core.model.BaseEntity;
-import com.crmapp.user.UserEntity;
+import com.crmapp.user.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -47,6 +47,6 @@ public class EmployeeEntity extends BaseEntity {
     private LocalDateTime hireDate;
 
     @OneToOne(mappedBy = "employee", cascade = CascadeType.ALL, orphanRemoval = true)
-    private UserEntity user;
+    private User user;
 
 }
