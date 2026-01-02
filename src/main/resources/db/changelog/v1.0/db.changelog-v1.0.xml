@@ -8,6 +8,7 @@
     <include file="db/changelog/v1.0/001-create-table-employees.xml"/>
     <include file="db/changelog/v1.0/002-create-table-users.xml"/>
     <include file="db/changelog/v1.0/003-create-table-addresses.xml"/>
+    <include file="db/changelog/v1.0/004-create-table-departments.xml"/>
     <include file="db/changelog/v1.0/999_insert_into_tables.sql"/>
 
 </databaseChangeLog>

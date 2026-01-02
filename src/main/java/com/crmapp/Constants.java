@@ -15,6 +15,7 @@ public class Constants {
         public static final String USERS = "users";
         public static final String EMPLOYEES = "employees";
         public static final String ADDRESSES = "addresses";
+        public static final String DEPARTMENTS = "departments";
     }
 
     public static class MessageConstants {

@@ -4,6 +4,7 @@ import com.crmapp.core.response.dto.BaseResponseDto;
 import com.crmapp.core.response.dto.ResultDto;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -13,7 +14,8 @@ import java.util.List;
 @RequestMapping("address")
 public class AddressesController {
 
-    private final AddressServiceImpl addressService;
+//    @Qualifier("AddressServiceImplVer2")
+    private final AddressService addressService;
 
     @Autowired
     public AddressesController(AddressServiceImpl addressService) {
@@ -23,6 +25,7 @@ public class AddressesController {
     @GetMapping("all")
     public BaseResponseDto<List<AddressDto>> getAllAddresses() {
         return new BaseResponseDto<>(addressService.getAllAddresses());
+
     }
 
     @GetMapping(value = "{addressId}")
@@ -33,7 +36,7 @@ public class AddressesController {
 
     @DeleteMapping(value = "{addressId}")
     public ResultDto deleteAddress(@PathVariable Long addressId) {
-        addressService.deleteCompany(addressId);
+        addressService.delete(addressId);
         return new ResultDto("success");
     }
 

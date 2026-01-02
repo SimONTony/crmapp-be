@@ -7,7 +7,7 @@ public interface AddressService {
 
     AddressDto getAddressById(Long addressId);
 
-    void deleteCompany(Long addressId);
+    void delete(Long addressId);
 
     AddressDto addAddress(AddressDto addressDto);
 

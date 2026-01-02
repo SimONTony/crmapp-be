@@ -1,3 +1,5 @@
+
+
 package com.crmapp.addresses;
 
 import org.springframework.core.convert.converter.Converter;
@@ -7,7 +9,8 @@ import org.springframework.stereotype.Component;
 public class AddressesDtoToAddressesEntityConverter implements Converter<AddressDto, Address> {
 
     @Override
-    public Address convert(AddressDto source) {
+    public Address
+    convert(AddressDto source) {
         return Address.builder()
                 .country(source.getCountry())
                 .state(source.getState())

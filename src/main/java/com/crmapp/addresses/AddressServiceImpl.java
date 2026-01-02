@@ -41,7 +41,7 @@ public class AddressServiceImpl implements AddressService {
     }
 
     @Override
-    public void deleteCompany(Long addressId) {
+    public void delete(Long addressId) {
         addressesRepository.deleteById(addressId);
     }
 
